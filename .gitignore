@@ -28,7 +28,7 @@ build/
 .gradle
 local.properties
 *.iml
-test/target
+
 # node.js
 #
 node_modules/
@@ -57,3 +57,9 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+#test files 
+test/target
+test/*.apk
+test/*.txt
+

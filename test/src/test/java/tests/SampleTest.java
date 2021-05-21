@@ -1,7 +1,6 @@
 package tests;
 
 import com.microsoft.appcenter.appium.Factory;
-import global.BaseFeature;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
