@@ -7,6 +7,7 @@ echo $APP_NAME
 echo $DEVICE_SET
 # TEST_SERIES: <test series>
 echo $TEST_SERIES
+# TEST_RUN_TOKEN: token to use for test scheduling
 
 
 TEST_DIRECTORY=$APPCENTER_SOURCE_DIRECTORY/test
@@ -25,11 +26,11 @@ if [ "$AGENT_JOBSTATUS" = "Succeeded" ]; then
     echo "schedule appium test run"
     appcenter test run appium  \
     --app $APP_NAME \
-    --devices $DEVICES \
+    --devices $DEVICE_SET \
     --app-path $APP_PATH \
     --test-series $TEST_SERIES \
     --locale $LOCALE  \
-    --token $APPCENTER_TOKEN \
+    --token $TEST_RUN_TOKEN \
     --build-dir $TEST_BUILD_DIR \
     --async
 
