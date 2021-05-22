@@ -9,17 +9,26 @@ echo $DEVICE_SET
 echo $TEST_SERIES
 # TEST_RUN_TOKEN: token to use for test scheduling (only user token works)
 
-TEST_DIRECTORY=$APPCENTER_SOURCE_DIRECTORY/mobile_tests
+TEST_DIRECTORY=$APPCENTER_SOURCE_DIRECTORY/test
 TEST_BUILD_DIR=$TEST_DIRECTORY/target/upload
-APP_PATH=$APPCENTER_OUTPUT_DIRECTORY/*.apk
+ANDROID_APP_PATH=$APPCENTER_OUTPUT_DIRECTORY/*.apk
+IOS_APP_PATH=$APPCENTER_OUTPUT_DIRECTORY/*.ipa
 SCRIPTS_DIRECTORY=$APPCENTER_SOURCE_DIRECTORY/scripts
 LOCALE="en_US"
+
+
+if [ find "$APPCENTER_OUTPUT_DIRECTORY" -name '*.apk' ];
+then 
+    APP_PATH=$ANDROID_APP_PATH
+else 
+    APP_PATH=$IOS_APP_PATH
+fi
 
 # check if build succeded 
 if [ "$AGENT_JOBSTATUS" = "Succeeded" ]; then 
 
     echo "############## clone tests repository ################"
-    git clone -b main https://github.com/yosefnega/mobile-tests.git mobile_tests
+    git clone -b main https://github.com/yosefnega/mobile-tests.git test
 
     echo "############## build junit tests ##############"
     cd $TEST_DIRECTORY
