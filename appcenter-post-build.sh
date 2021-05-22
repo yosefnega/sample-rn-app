@@ -17,7 +17,7 @@ SCRIPTS_DIRECTORY=$APPCENTER_SOURCE_DIRECTORY/scripts
 LOCALE="en_US"
 
 
-if [ find "$APPCENTER_OUTPUT_DIRECTORY" -name '*.apk' ];
+if  find $APPCENTER_OUTPUT_DIRECTORY -name '*.apk' ;
 then 
     APP_PATH=$ANDROID_APP_PATH
 else 
@@ -49,6 +49,6 @@ if [ "$AGENT_JOBSTATUS" = "Succeeded" ]; then
 else
 
     echo "############## build failed will not schedule test ##############"
-    exit 0
+    # exit 0
 
 fi
